@@ -1,44 +1,41 @@
-# Quantum Inspired Feature Engineering
+# Quantum-Inspired Feature Engineering
 
-## Overview
-This project explores how quantum-inspired feature transformations can enhance cross-sectional equity factor models for alpha construction.
-We simulate quantum feature maps using Qiskit and apply classical machine learning models to predict relative returns.
+A research proposal exploring whether simulated quantum feature maps can improve cross-sectional equity return models relative to classical feature transformations.
 
----
+**Status:** this repository currently contains the proposal only. It does not yet contain datasets, implementation code, notebooks, backtests, or measured results.
 
-## Project Structure
-- `/data` - Raw and processed stock market data
-- `/src` - Core feature engineering, model training, and backtesting code
-- `/notebooks` - Experiment notebooks
-- `/reports` - Generated charts, metrics, and findings
+## Research question
 
-## Motivation
-While quantum computing is not yet practical for live trading, quantum-inspired feature mappings can unlock new representations of financial data. 
-This project investigates whether these mappings offer an edge in traditional equity factor modeling and trading.
+Do quantum-inspired representations add predictive value after controlling for data leakage, model capacity, transaction costs, and the choice of classical baseline?
 
-## Methodology
-1. Build the six-factor model proposed by Barillas, Kan, Robotti, and Shanken (2020), which includes: market (Mkt), size (SMB), value with monthly-updated HML following Asness/Frazzini (instead of the traditional annual update by Fama-French), cash-based profitability (RMWc, replacing operating profitability), investment (CMA from the q-factor model), and momentum (UMD). According to the paper *A Comparison of Global Factor Models* by Matthias X. Hanauer (2024), this model achieved an international Sharpe ratio of 2.36.
+## Proposed approach
 
-2. Apply Quantum Kernel Mapping (using Qiskit) to transform features into a higher-dimensional Hilbert space.
-   
-3. Train classical machine learning models (e.g., SVM, Gradient Boosted Trees) on the quantum-transformed features.
+1. Define a reproducible equity universe, data provenance, and point-in-time factor inputs.
+2. Build classical baselines before introducing quantum-inspired transformations.
+3. Simulate feature maps with Qiskit and compare them with conventional kernels and nonlinear transformations.
+4. Train and evaluate models using time-based splits and a held-out test period.
+5. Compare predictive metrics and portfolio results after explicit turnover and cost assumptions.
 
-4. Backtest a long-short equity portfolio strategy based on the predicted cross-sectional alphas.
+## Planned repository layout
 
-## Key Technologies
-1. Python (Polars, Apache Arrow, Scikit-learn, XGBoost)
-2. Qiskit (Quantum Feature Maps, Quantum Kernel Learning)
-3. Financial Modeling (Factor Construction, Portfolio Backtesting)
+These directories are planned; they are not present yet.
 
-## Results
-- Baseline (traditional features only) Sharpe Ratio: In-Progress
-- Quantum-augmented feature model Sharpe Ratio: In-Progress
-- Cumulative returns chart showing the performance differential.
+| Directory | Intended contents |
+| --- | --- |
+| `data/` | Data documentation and permitted datasets |
+| `src/` | Feature transformations, training, and evaluation |
+| `notebooks/` | Exploratory experiments |
+| `reports/` | Reproducible results and limitations |
 
-## Conclusion (In-Progress)
-To assess whether quantum-inspired methods offer meaningful improvements in feature expressiveness, further research and live trading validation are needed to evaluate their practical performance—particularly under slippage conditions.
+## Candidate tools
 
-## Acknowledgement
-- Barillas et al. six-factor model research
+Python, Polars, Apache Arrow, scikit-learn, XGBoost, and Qiskit. Dependencies and supported versions will be recorded alongside the implementation.
 
+## Next milestones
 
+- [ ] Document the dataset, universe, target, and evaluation protocol.
+- [ ] Implement and validate a classical baseline.
+- [ ] Add one simulated quantum feature-map experiment.
+- [ ] Publish reproducible comparisons, including negative results.
+
+No performance advantage or live trading readiness is claimed at this stage.
